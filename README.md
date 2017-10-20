@@ -31,9 +31,15 @@ class MyComponent extends Component {
 }
 ```
 
-## Use shape for propTypes wherever applicable
+### Use shape for propTypes wherever applicable
+```javascript
+  optionalObjectWithShape: PropTypes.shape({
+    color: PropTypes.string,
+    fontSize: PropTypes.number
+  }),
+```
 
-## Destructure props and state as individual constants
+### Destructure props and state as individual constants
 ```javascript
 const {visible, marker} = this.state
 const {data, config} = this.props
