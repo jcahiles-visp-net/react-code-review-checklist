@@ -1,4 +1,4 @@
-# react-code-review-checklist
+# React Code Review Checklist
 An opinionated code-review checklist for React applications.
 
 ## Keep code DRY (Don't repeat yourself)
@@ -33,13 +33,15 @@ class MyComponent extends Component {
 
 ### Use shape for propTypes wherever applicable
 ```javascript
-  optionalObjectWithShape: PropTypes.shape({
-    color: PropTypes.string,
-    fontSize: PropTypes.number
-  }),
+MyComponent.propTypes = {
+    optionalObjectWithShape: PropTypes.shape({
+        color: PropTypes.string,
+        fontSize: PropTypes.number
+    }),
+}
 ```
 
-### Destructure props and state as individual constants
+## Destructure props and state as individual constants
 ```javascript
 const {visible, marker} = this.state
 const {data, config} = this.props
