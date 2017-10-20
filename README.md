@@ -31,7 +31,7 @@ class MyComponent extends Component {
 }
 ```
 
-### Use shape for propTypes wherever applicable
+## Use shape for propTypes wherever applicable
 
 ## Destructure props and state as individual constants
 ```javascript
@@ -79,7 +79,7 @@ this.setState(prevState => ({visible: !prevState.visible}));
 ## Use fat arrow instead of var that = this
 ```javascript
 const myFunction = () => {
-    this.myObject // This is defined here since we are using fat arrow for function creation
+    this.myObject // 'this' is defined here since we are using fat arrow for function creation
 }
 ```
 
