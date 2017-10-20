@@ -3,9 +3,41 @@ An opinionated code-review checklist for React applications.
 
 ## Keep code DRY (Don't repeat yourself)
 
-## Enforce propTypes
+## Enforce propTypes (Use ES7 Property Initializers)
+```javascript
+class MyComponent extends Component {
+    static propTypes = {
+        model: Proptypes.string
+        ...
+    }
+}
+```
+
+## Use ES 7 Property Initializers for declaring state and default props
+```javascript
+class MyComponent extends Component {
+    state = {visible: true}
+
+    static propTypes = {
+        model: Proptypes.string
+        ...
+    }
+
+    static defaultProps = {
+        model: {title: 'VISP'},
+        ...
+    }
+
+}
+```
 
 ### Use shape for propTypes wherever applicable
+
+## Destructure props and state as individual constants
+```javascript
+const {visible, marker} = this.state
+const {data, config} = this.props
+```
 
 ## No commented code
 
@@ -14,6 +46,9 @@ An opinionated code-review checklist for React applications.
 ## Event listeners removed
 
 ## setState callback function is used
+```javascript
+this.setState(prevState => ({visible: !prevState.visible}));
+```
 
 ## JSX markup should be no more than 50 lines
 
@@ -27,7 +62,7 @@ An opinionated code-review checklist for React applications.
 
 ## No api calls in containers, delegate to Stores
 
-## Use <Link /> instead of <a />
+## Use '<Link />' instead of '<a />'
 
 ## No unused props are being passed
 
@@ -42,6 +77,11 @@ An opinionated code-review checklist for React applications.
 ## Move data to constants if used in multiple files, like statusText and status code
 
 ## Use fat arrow instead of var that = this
+```javascript
+const myFunction = () => {
+    this.myObject // This is defined here since we are using fat arrow for function creation
+}
+```
 
 ## Use let/const over var
 
