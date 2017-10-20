@@ -97,6 +97,38 @@ const myFunction = () => {
 
 ## Use let/const over var
 
+## No nested ternaries, specially inside 'render' function
+```javascript
+...
+{
+    // Don't do this
+    this.state.visible
+    ? return false
+    : this.state.model === 'check'
+        ?   return false
+        : this.state.arrow > 20
+            ?   return false
+            :   return true
+}
+...
+// If instant conditionals needed, use IIFE. Better solution would be to make a new class function
+{() => {
+    if(this.state.visible){
+        return false
+    } else {
+        if(this.state.model === 'check'){
+            return false
+        } else {
+            if(this.state.arrow > 20){
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+}}
+```
+
 ## Use '' in JS code and "" in JSX
 
 ## No useless constructor
