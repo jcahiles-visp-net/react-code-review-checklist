@@ -83,6 +83,18 @@ const myFunction = () => {
 }
 ```
 
+## No new closures passed to subcomponents
+```javascript
+<input
+    type="text"
+    value={model.name}
+    // onChange={(e) => { model.name = e.target.value }}
+    // ^ Not this. Use the below:
+    onChange={this.handleChange}
+    placeholder="Your Name"
+/>
+```
+
 ## Use let/const over var
 
 ## Use '' in JS code and "" in JSX
