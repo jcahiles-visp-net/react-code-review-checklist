@@ -44,6 +44,19 @@ const {data, config} = this.props
 ## Keep components small
 
 ## Event listeners removed
+```javascript
+// Don't do this inside a react component
+const value = document.getElementById('check').addEventListener('click', function(){
+    ...
+})
+
+// Make use of the event props
+const handleClick = (event) => {
+    event.preventDefault()
+}
+
+<MyComponent onClick={this.handleClick} >
+```
 
 ## setState callback function is used
 ```javascript
@@ -63,6 +76,21 @@ this.setState(prevState => ({visible: !prevState.visible}));
 ## No api calls in containers, delegate to Stores
 
 ## Use '<Link />' instead of '<a />'
+```javascript
+// If using react-router, use its Link component
+import {Link} from 'react-router-dom'   // react-router 4.x
+import {Link} from 'react-router'       //react-router 3.x, 2.x, 1.x
+
+...
+render = () => {
+    return (
+        <div>
+            <Link>This is a link</Link>
+        </div>
+    )
+}
+...
+```
 
 ## No unused props are being passed
 
@@ -96,6 +124,14 @@ const myFunction = () => {
 ```
 
 ## Use let/const over var
+```javascript
+// Don't use this
+var visible = false;
+
+// Use this instead
+const name = 'VISP'     // If value of variable will not change during runtime
+let visible = false     // If value of variable is expected to change during runtime
+```
 
 ## No nested ternaries, specially inside 'render' function
 ```javascript
@@ -132,5 +168,22 @@ const myFunction = () => {
 ## Use '' in JS code and "" in JSX
 
 ## No useless constructor
+```javascript
+// This is an ES 6 implementation
+class MyComponent extends Component {
+    constructor(props){
+        this.state = {
+            ...
+        }
+    }
+}
+
+// This is an ES 7 implementation
+class MyComponent extends Component {
+    state = {
+        ...
+    }
+}
+```
 
 
