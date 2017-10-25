@@ -3,6 +3,12 @@ An opinionated code-review checklist for React applications.
 
 ## Keep code DRY (Don't repeat yourself)
 
+## No other logic aside from display logic inside components
+
+## No logic inside Reducers
+
+### Put your other logic inside Action Creators
+
 ## Enforce propTypes (Use ES7 Property Initializers)
 ```javascript
 class MyComponent extends Component {
@@ -83,7 +89,7 @@ this.setState(prevState => ({visible: !prevState.visible}));
 
 ## No api calls in containers, delegate to Stores
 
-## Use '<Link />' instead of '<a />'
+## Use Link element instead of Anchor element
 ```javascript
 // If using react-router, use its Link component
 import {Link} from 'react-router-dom'   // react-router 4.x
