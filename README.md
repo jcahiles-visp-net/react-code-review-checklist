@@ -10,6 +10,7 @@ An opinionated code-review checklist for React applications.
 ### Put your other logic inside Action Creators
 
 ## Enforce propTypes (Use ES7 Property Initializers)
+Your proptypes act as a dictionary on what the expected props should be. This enable developers to understand your code faster and ensures the integrity of the props.
 ```javascript
 class MyComponent extends Component {
     static propTypes = {
@@ -20,6 +21,8 @@ class MyComponent extends Component {
 ```
 
 ## Use ES 7 Property Initializers for declaring state and default props
+Property initializers reduces the amount of overhead a developer has to code in order to start making a component.
+It get rids of the need of a constructor, or binding your components inside the constructor.
 ```javascript
 class MyComponent extends Component {
     state = {visible: true}
@@ -38,6 +41,7 @@ class MyComponent extends Component {
 ```
 
 ### Use shape for propTypes wherever applicable
+Because our proptypes act as a our guide/dictionary to a component, a detailed view on what the props should contain is also needed.
 ```javascript
 MyComponent.propTypes = {
     optionalObjectWithShape: PropTypes.shape({
@@ -58,6 +62,8 @@ const {data, config} = this.props
 ## Keep components small
 
 ## Event listeners removed
+Creating anything that has the ability to manipulate the DOM directly is not React-friendly. React relies on its virtual dom to render objects.
+Directly changing the DOM will blind the virtual DOM from those changes.
 ```javascript
 // Don't do this inside a react component
 const value = document.getElementById('check').addEventListener('click', function(){
@@ -73,6 +79,8 @@ const handleClick = (event) => {
 ```
 
 ## setState callback function is used
+While this not really that useful for direct state setting, this is useful if the developer is basing the new value of the state from its previous value.
+This will ensure that the setting of the new state is done after any potential changes in the state.
 ```javascript
 this.setState(prevState => ({visible: !prevState.visible}));
 ```
@@ -119,6 +127,7 @@ render = () => {
 ## Move data to constants if used in multiple files, like statusText and status code
 
 ## Use fat arrow instead of var that = this
+Using fat arrow functions will bind the "this" keyword in the function. Meaning, "this" will always refer to the component, and not to "null" or "undefined"
 ```javascript
 const myFunction = () => {
     this.myObject // 'this' is defined here since we are using fat arrow for function creation
@@ -126,6 +135,8 @@ const myFunction = () => {
 ```
 
 ## No new closures passed to subcomponents
+Example: https://jsfiddle.net/johnnyji/mtkjc5on/
+Ref: http://johnnyji.me/react/2016/06/27/why-arrow-functions-murder-react-performance.html
 ```javascript
 <input
     type="text"
@@ -138,6 +149,9 @@ const myFunction = () => {
 ```
 
 ## Use let/const over var
+First, this will make the javascript code more optimized as the translator will have faster reading times because of the consts and let restrictions.
+Second, this will make error detection easier as developers can keep track if a variable that should not change its value, changes its value.
+Third, the programming pattern develop when using these two is cleaner compared to using var.
 ```javascript
 // Don't use this
 var visible = false;
@@ -182,6 +196,7 @@ let visible = false     // If value of variable is expected to change during run
 ## Use '' in JS code and "" in JSX
 
 ## No useless constructor
+This is in connection with using ES7 Property Initializers
 ```javascript
 // This is an ES 6 implementation
 class MyComponent extends Component {
