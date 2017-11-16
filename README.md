@@ -3,6 +3,12 @@ An opinionated code-review checklist for React applications.
 
 ## Keep code DRY (Don't repeat yourself)
 
+## If a variable reaches three degress depth or more, destructure it.
+```javascript
+const {value} = this.props
+const {myVariable} = data.person
+```
+
 ## No other logic aside from display logic inside components
 
 ## No logic inside Reducers
